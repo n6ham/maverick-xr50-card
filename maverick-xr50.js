@@ -133,11 +133,10 @@ class MaverickXR50 extends LitElement {
     return height > 0 ? Math.ceil(height / 50) : 13;
   }
 
-  // The rules for sizing your card in the grid in sections view. 9 rows, like
-  // the TempSpike XR card, so the two line up side by side.
+  // The rules for sizing your card in the grid in sections view
   getGridOptions() {
     return {
-      rows: 9,
+      rows: 8,
       columns: 12,
       min_columns: 4,
       min_rows: 4,

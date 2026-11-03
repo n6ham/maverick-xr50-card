@@ -11,33 +11,25 @@ export const maverickXR50Styles = css`
     height: 100%;
   }
 
-  /*
-   * Area available for the device. In sections view the grid gives the card a
-   * fixed height, so this fills the cell. In masonry view the height is not
-   * fixed, so aspect-ratio derives it from the width instead.
-   * max-width makes the card as tall as the TempSpike XR card at its default
-   * size: 360px * (952.4 / 560) * (568 / 730) ≈ 476px wide, 612px tall.
-   */
   .maverick-xr50-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 476px;
+    max-width: 437px;
     height: 100%;
     margin: 0 auto;
     aspect-ratio: 568 / 730;
     container-type: size;
   }
 
-  /* The device: the largest box with the device's proportions that fits. */
   .maverick-xr50-card {
     position: relative;
     text-align: center;
-    width: min(100cqw, 100cqh * 0.7781); /* 568 / 730 */
+    width: min(100cqw, 100cqh * 0.7781);
     aspect-ratio: 568 / 730;
     --font-digits: segment7, monospace;
-    --font-labels: 'Arial Narrow', sans-serif; /* Condensed look for labels */
+    --font-labels: 'Arial Narrow', sans-serif;
   }
   
   .maverick-xr50-image img {
@@ -56,14 +48,11 @@ export const maverickXR50Styles = css`
   }
   
   .lcd-screen {
-    /* 1. Make the container fill its parent */
     width: 100%; 
     height: 100%;
     
-    /* 2. Maintain the rectangular shape of the physical device */
     aspect-ratio: 1.1 / 1; 
     
-    /* 3. Container Query setup so children can scale font based on width */
     container-type: inline-size;
   
     display: grid;
@@ -101,7 +90,6 @@ export const maverickXR50Styles = css`
     padding: 2cqw 0 0 2cqw;
   }
 
-  /* Header Labels */
   .header-row {
     display: flex;
     justify-content: space-around;
@@ -111,7 +99,6 @@ export const maverickXR50Styles = css`
     transform: scaleY(1.2);
   }
   
-  /* Limit Values */
   .limit-row {
     display: flex;
     justify-content: space-between;
@@ -122,17 +109,13 @@ export const maverickXR50Styles = css`
     transform: scaleY(1.2);
   }
   
-  /* Main Temperature Area */
   .temp-display {
     display: grid;
-    /* Column 1: Big Number | Column 2: Units */
     grid-template-columns: 1fr auto; 
-    /* Use 'min-content' to ensure rows don't stretch unnecessarily */
     grid-template-rows: 1fr 1fr; 
     flex-grow: 1;
     width: 100%;
     position: relative;
-    /* This ensures the grid spans the full height of the big number */
     align-items: stretch;
     transform: scaleY(1.3);
     margin-bottom: 4cqw;
@@ -143,7 +126,6 @@ export const maverickXR50Styles = css`
     grid-row: 1 / span 2;
     font-family: var(--font-digits);
     font-size: 26cqw;
-    /* Using a very tight line-height to crop empty font space */
     line-height: 0.8; 
     text-align: right;
     display: flex;
@@ -156,7 +138,6 @@ export const maverickXR50Styles = css`
   .unit-top {
     grid-column: 2;
     grid-row: 2;
-    /* Force it to the top-most pixel of the first row */
     align-self: start; 
     font-family: var(--font-labels);
     font-weight: bold;
@@ -169,7 +150,6 @@ export const maverickXR50Styles = css`
   .unit-decimal {
     grid-column: 2;
     grid-row: 2;
-    /* Force it to the bottom-most pixel of the second row */
     align-self: end; 
     font-family: var(--font-digits);
     font-size: 17cqw;

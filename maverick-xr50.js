@@ -129,14 +129,18 @@ class MaverickXR50 extends LitElement {
   // The height of your card. Home Assistant uses this to automatically
   // distribute all cards over the available columns in masonry view
   getCardSize() {
-    return 12;
+    const height = this.offsetHeight;
+    return height > 0 ? Math.ceil(height / 50) : 13;
   }
 
-  // The rules for sizing your card in the grid in sections view
+  // The rules for sizing your card in the grid in sections view. 9 rows, like
+  // the TempSpike XR card, so the two line up side by side.
   getGridOptions() {
     return {
-      rows: 6,
+      rows: 9,
       columns: 12,
+      min_columns: 4,
+      min_rows: 4,
     };
   }
 }

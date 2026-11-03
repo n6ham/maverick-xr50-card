@@ -6,22 +6,36 @@ export const maverickXR50Styles = css`
     src: url("/local/7segment.woff") format("woff");
   }
   
+  :host {
+    display: block;
+    height: 100%;
+  }
+
+  /*
+   * Area available for the device. In sections view the grid gives the card a
+   * fixed height, so this fills the cell. In masonry view the height is not
+   * fixed, so aspect-ratio derives it from the width instead.
+   * max-width makes the card as tall as the TempSpike XR card at its default
+   * size: 360px * (952.4 / 560) * (568 / 730) ≈ 476px wide, 612px tall.
+   */
   .maverick-xr50-container {
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    display: flex;
+    max-width: 476px;
+    height: 100%;
+    margin: 0 auto;
+    aspect-ratio: 568 / 730;
+    container-type: size;
   }
-  
+
+  /* The device: the largest box with the device's proportions that fits. */
   .maverick-xr50-card {
     position: relative;
-    justify-content: center;
     text-align: center;
-    align-items: center;
-    width: 100%;
-    aspect-ratio: 1 / 1.285;
-    max-width: 568px;
-    min-width: 212px; 
+    width: min(100cqw, 100cqh * 0.7781); /* 568 / 730 */
+    aspect-ratio: 568 / 730;
     --font-digits: segment7, monospace;
     --font-labels: 'Arial Narrow', sans-serif; /* Condensed look for labels */
   }
